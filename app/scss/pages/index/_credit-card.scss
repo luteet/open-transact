@@ -1,0 +1,160 @@
+.credit-card {
+
+	// .credit-card__body
+
+	&__body {
+	}
+
+	// .credit-card__col
+
+	&__col {
+	}
+
+	// .credit-card__video
+
+	&__video {
+	}
+
+	// .credit-card__section-name
+
+	&__section-name {
+	}
+
+	// .credit-card__title
+
+	&__title {
+	}
+
+	// .credit-card__text
+
+	&__text {
+	}
+
+	// .credit-card__sign-up
+
+	&__sign-up {
+
+		margin-top: 6.933333vw;
+
+		@include _700 {
+			margin-top: 1.805556vw;
+		}
+		
+		@include _1440 {
+			margin-top: 26px;
+		}
+
+		span {
+			color: var(--silver-text);
+			font-size: 3.2vw;
+			@include _700 {
+				font-size: 0.972222vw;
+			}
+			
+			@include _1440 {
+				font-size: 14px;
+			}
+			font-weight: 600;
+			line-height: 165.8%;
+		}
+
+		// .credit-card__sign-up--wrapper
+
+		&--wrapper {
+
+			margin-top: 4vw;
+			display: grid;
+			grid-template-columns: auto 24vw;
+
+			@include _700 {
+				margin-top: 1.041667vw;
+				grid-template-columns: auto 6.25vw;
+				max-width: 28.819444vw;
+			}
+			
+			@include _1440 {
+				grid-template-columns: auto 90px;
+				max-width: 415px;
+				margin-top: 15px;
+			}
+
+			label {
+				display: block;
+			}
+
+			input {
+				width: 100%;
+				padding: 4.266667vw 5.333333vw;
+				font-size: 3.733333vw;
+				line-height: 100%;
+				border-radius: 1.6vw 0 0 1.6vw;
+				background: var(--light-gray);
+				color: var(--black);
+				font-weight: 600;
+				&::placeholder {
+					color: var(--silver-text);
+				}
+
+				@include _700 {
+					padding: 16px 20px;
+					font-size: 0.972222vw;
+					border-radius: 0.416667vw 0 0 0.416667vw;
+				}
+				
+				@include _1440 {
+					font-size: 0.875rem;
+					padding: 16px 20px;
+					border-radius: 6px 0px 0px 6px;
+				}
+
+			}
+
+			button {
+				padding: 4.266667vw 5.333333vw;
+				font-size: 3.733333vw;
+
+				border-radius: 0px 1.6vw 1.6vw 0px;
+
+				@include _700 {
+					padding: 1.111111vw 1.388889vw;
+					font-size: 0.972222vw;
+					border-radius: 0px 0.416667vw 0.416667vw 0px;
+				}
+				
+				@include _1440 {
+					padding: 16px 20px;
+					font-size: 0.875rem;
+					border-radius: 0px 6px 6px 0px;
+				}
+				
+				font-weight: 600;
+				line-height: 100%;
+
+				background: var(--accent);
+				color: var(--white);
+
+				transition: background .3s ease;
+				@media (any-hover: hover) {
+					&:not(._disabled):hover {
+						background: var(--accent-hover);
+					}
+					&:not(._disabled):active {
+						background: var(--accent-active);
+					}
+				}
+
+				&:active {
+					background: var(--accent-active);
+				}
+			}
+
+			@include _700 {
+				margin-top: 1.041667vw;
+			}
+			
+			@include _1440 {
+				margin-top: 15px;
+			}
+		}
+	}
+}

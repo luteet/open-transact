@@ -1,0 +1,75 @@
+
+@font-face {
+	@include font-include('Mont', 300, swap, normal, 'Mont-Light');
+}
+
+@font-face {
+	@include font-include('Mont', 600, swap, normal, 'Mont-Regular');
+}
+
+@font-face {
+	@include font-include('Mont', 700, swap, normal, 'Mont-SemiBold');
+}
+
+@font-face {
+	@include font-include('Mont', 800, swap, normal, 'Mont-Bold');
+}
+
+.main-title {
+	font-family: var(--title-font);
+	&._light {
+		color: var(--white);
+		mark {
+			color: rgba(255, 255, 255, 0.31);
+		}
+	}
+
+	&._animated mark .text-icon {
+		opacity: 1;
+	}
+
+	mark {
+		background: transparent;
+		color: rgba(14, 18, 24, 0.322);
+	}
+
+	font-size: 14.666667vw;
+	font-weight: 800;
+	line-height: 102.3%;
+
+	@include _700 {
+		font-size: 5.972222vw;
+	}
+
+	@include _1440 {
+		font-size: 5.375rem;
+	}
+}
+
+.title {
+	
+	font-family: var(--title-font);
+	font-weight: 800;
+	font-size: 11.733333vw;
+	line-height: 105%;
+
+	@include _700 {
+		font-size: 5.138889vw;
+	}
+
+	@include _1440 {
+		font-size: 4.625rem;
+	}
+
+}
+
+.section-title {
+
+	font-family: var(--title-font);
+	font-weight: 700;
+
+}
+
+.txt-center {
+	text-align: center;
+}

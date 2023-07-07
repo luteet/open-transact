@@ -1,0 +1,466 @@
+@use 'sass:math';
+
+:root {
+	--title-font: 'Mont', sans-serif;
+	--main-font: 'Mont', sans-serif;
+	
+	--accent: #1A936F;
+	--accent-hover: #21a880;
+	--accent-active: #10815f;
+	--accent-active-2: rgba(26, 147, 111, 0.11);
+	--accent-2: #FCAA67;
+	--accent-2-active: rgba(252, 170, 103, 0.14);
+	--accent-2-dark: #403833;
+
+	--white: #FFF;
+	--black: #0E1218;
+	--dark: #13171D;
+	--blue: #3F88C5;
+	--light-gray: #F5F6F6;
+	--silver-text: #A4A6A8;
+
+	--container-padding: 8.125vw;
+	--desktop-container-padding: 117px;
+	--mob-container-padding: 8vw;
+}
+
+html, body {
+	font-size: 16px;
+	min-height: 100%;
+	min-width: 320px;
+}
+
+body {
+
+	font-family: var(--main-font);
+	font-weight: 600;
+	line-height: 150%;
+
+	display: flex;
+	flex-direction: column;
+
+	//padding-right: var(--popup-padding);
+
+	&._mob-menu-active {
+		overflow: hidden;
+	}
+
+	&._popup-active {
+		overflow: hidden;
+	}
+	
+}
+
+.image-aspect-ratio {
+	width: 100%; position: relative;
+	padding-top: var(--padding-aspect-ratio);
+}
+
+.image-aspect-ratio img {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	object-fit: cover;
+}
+
+section {
+	position: relative;
+	z-index: 2;
+}
+
+.wrapper {
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.main {
+	overflow: hidden;
+
+	flex: 1 0 auto;
+	position: relative;
+}
+
+.container {
+	padding-left: var(--mob-container-padding);
+	padding-right: var(--mob-container-padding);
+
+	@media (min-width: 700px) {
+		padding-left: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
+		padding-right: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
+	}
+	
+	@media (min-width: #{$container}px) {
+		padding-left: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
+		padding-right: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
+	}
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-flex;
+	text-align: center;
+
+	border-radius: 2.133333vw;
+	padding: 4.533333vw 6.4vw;
+	font-size: 4.266667vw;
+	line-height: 125%;
+	&._alt {
+		padding: 2.5vw 4.266667vw;
+	}
+	
+	@include _700 {
+		font-size: 1.111111vw;
+		padding: 1.319444vw 2.152778vw;
+		border-radius: 1.041667vw;
+	}
+	
+	@include _1440 {
+		padding: 19px 31px;
+		font-size: 1rem;
+		border-radius: 15px;
+	}
+
+	background: var(--accent);
+	color: var(--white);
+
+	transition: background .3s ease;
+	@media (any-hover: hover) {
+		&:not(._disabled):hover {
+			background: var(--accent-hover);
+		}
+		&:not(._disabled):active {
+			background: var(--accent-active);
+		}
+	}
+
+	&:active {
+		background: var(--accent-active);
+	}
+
+	&._disabled {
+		pointer-events: none;
+		background: rgba(255,255,255,0.1);
+		&:active {
+			background: rgba(255,255,255,0.1);
+		}
+		&[data-text] {
+			position: relative;
+			&::after {
+				content: attr(data-text);
+				position: absolute;
+				right: 0; top: 0;
+				transform: translate(10%,-50%);
+				display: inline-block;
+				text-transform: uppercase;
+				color: var(--accent-2);
+				font-size: 2.666667vw;
+				line-height: 100%;
+				font-weight: 600;
+				padding: 1.5vw 2.933333vw;
+				@include _700 {
+					font-size: 0.972222vw;
+					padding: 0.694444vw 1.25vw;
+				}
+				@include _1440 {
+					font-size: 0.875rem;
+					padding: 9px 17px;
+				}
+				border-radius: 100px;
+				background: var(--accent-2-dark);
+			}
+		}
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px; height: 1px;
+	margin: -1px; padding: 0;
+	border: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.hide-on-tablet {
+	@media (max-width: 701px) {
+		display: none;
+	}
+}
+
+.visible-on-tablet {
+	@include _700 {
+		display: none;
+	}
+}
+
+.split-text .line, .split-text .line {
+	overflow: hidden;
+}
+
+.split-text:not(._animated) .line-body, .split-text:not(._animated) .line-body {
+	transform: translate3d(0,150%,0);
+	opacity: 0;
+}
+
+.fade-up {
+	transform: translate(0,50px);
+	opacity: 0;
+	//transition: opacity .5s ease, transform .5s ease;
+}
+
+.fade-in {
+	opacity: 0;
+	transform: translate3d(0,0,0);
+	//transition: opacity .5s ease;
+}
+
+.step-section {
+
+	margin-top: 26.666667%; padding-top: 13.333333vw;
+
+	@include _700 {
+		margin-top: 13.888889%; padding-top: 3.472222vw;
+	}
+	
+	@include _1440 {
+		margin-top: 200px; padding-top: 50px;
+	}
+
+	// .step-section__body
+
+	&__body {
+		
+
+		@include _700 {
+			display: grid;
+			grid-template-columns: 50% 50%;
+			border-radius: 1.180556vw;
+		}
+		
+		@include _1440 {
+			border-radius: 17px;
+		}
+		position: relative;
+		z-index: 2;
+		
+	}
+
+	&:not(._alt-mode) {
+		padding-bottom: 8.8vw;
+
+		@include _700 {
+			padding-bottom: 3.472222vw;
+		}
+		
+		@include _1440 {
+			padding-bottom: 50px;
+		}
+	}
+
+	&:not(._alt-mode) & {
+		
+		&__body {
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0; top: 0;
+				width: 100%; height: 100%;
+				border-radius: 4.533333vw;
+				@include _700 {
+					border-radius: 1.180556vw;
+				}
+				
+				@include _1440 {
+					border-radius: 17px;
+				}
+				background: var(--black);
+				z-index: -1;
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				left: 5.866667vw; top: 8.8vw;
+				z-index: -2;
+				width: calc(100% - 5.866667vw - 5.866667vw); height: 100%;
+				background: var(--light-gray);
+				border-radius: 4.533333vw;
+				@include _700 {
+					border-radius: 1.180556vw;
+					left: 6.111111vw; top: 3.472222vw; 
+					width: calc(100% - 6.111111vw - 6.111111vw);
+				}
+				
+				@include _1440 {
+					border-radius: 17px;
+					left: 88px; top: 50px;
+					width: calc(100% - 88px - 88px);
+				}
+			}
+		}
+
+		&__title {
+			color: var(--white);
+			text-align: center;
+			@include _700 {
+				text-align: left;
+			}
+		}
+
+		&__text {
+			color: var(--white);
+			
+		}
+		&__col {
+			&:nth-child(1) {
+				text-align: center;
+				padding: 9.866667vw 8.533333vw 12.8vw;
+				@include _700 {
+					text-align: left;
+					padding: 5vw 2.083333vw 4.791667vw 4.791667vw;
+				}
+				
+				@include _1440 {
+					padding: 72px 30px 69px 69px;
+				}
+			}
+		}
+	}
+
+	&._reverse._alt-mode & {
+		&__body {
+			display: flex;
+			flex-direction: column-reverse;
+			@include _700 {
+				display: grid;
+			}
+		}
+		&__col:nth-child(1) {
+			margin-top: 13.333333vw;
+			@include _700 {
+				margin-top: 0;
+				padding: 0 4.236111vw 0 0;
+			}
+			
+			@include _1440 {
+				padding: 0 61px 0 0;
+			}
+		}
+		&__col:nth-child(2) {
+			
+			@include _700 {
+				
+				padding: 0 0 0 4.236111vw;
+			}
+			
+			@include _1440 {
+				padding: 0 0 0 61px;
+			}
+		}
+	}
+
+	// .step-section__col
+
+	&__col {
+		position: relative;
+		&:nth-child(1) {
+			padding: 0 0 13.333333vw 0;
+			@include _700 {
+				padding: 0 4.166667vw 0 0;
+			}
+			
+			@include _1440 {
+				padding: 0 60px 0 0;
+			}
+		}
+		&.anim-video {
+			@include _700 {
+				padding-left: 10.3%;
+			}
+		}
+	}
+
+	&__video {
+		position: relative;
+		width: 100%; padding-top: 90.942699%;
+		
+		video {
+			position: absolute;
+			left: 0; top: 0;
+			width: 100%; height: 100%;
+			border-radius: 3.733333vw;
+
+			@include _700 {
+				border-radius: 1.527778vw;
+			}
+			
+			@include _1440 {
+				border-radius: 22px;
+			}
+		}
+	}
+
+	&__name {
+		display: inline-block;
+		padding: 2.933333vw 4.533333vw;
+		font-size: 3.733333vw;
+		border-radius: 13.333333vw;
+
+		&._alt {
+			color: var(--accent-2);
+			background: var(--accent-2-active);
+		}
+
+		@include _700 {
+			padding: 0.763889vw 1.180556vw;
+			font-size: 0.972222vw;
+			border-radius: 3.472222vw;
+		}
+		
+		@include _1440 {
+			padding: 11px 17px;	
+			font-size: 0.875rem;
+			border-radius: 50px;
+		}
+		line-height: 115%;
+		color: var(--accent);
+		background: var(--accent-active-2);
+		
+	}
+
+	// .step-section__title
+
+	&__title {
+		margin-top: 6.933333vw;
+		@include _700 {
+			margin-top: 1.805556vw;
+		}
+		
+		@include _1440 {
+			margin-top: 26px;
+		}
+	}
+
+	// .step-section__text
+
+	&__text {
+		margin-top: 4vw;
+		font-size: 3.733333vw;
+		@include _700 {
+			margin-top: 1.041667vw;
+			font-size: 1.111111vw;
+		}
+		
+		@include _1440 {
+			margin-top: 15px;
+			font-size: 1rem;
+		}
+		font-weight: 600;
+		line-height: 165.8%;
+		
+	}
+}
+
