@@ -22,6 +22,7 @@
 	--container-padding: 8.125vw;
 	--desktop-container-padding: 117px;
 	--mob-container-padding: 8vw;
+	--alt-mob-container-padding: 3.2vw;
 }
 
 html, body {
@@ -85,15 +86,29 @@ section {
 .container {
 	padding-left: var(--mob-container-padding);
 	padding-right: var(--mob-container-padding);
+	&._alt-container {
+		padding-left: var(--alt-mob-container-padding);
+		padding-right: var(--alt-mob-container-padding);
+	}
 
 	@media (min-width: 700px) {
-		padding-left: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
-		padding-right: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
+		padding-left: var(--container-padding);
+		padding-right: var(--container-padding);
+		
+		&._alt-container {
+			padding-left: var(--container-padding);
+			padding-right: var(--container-padding);
+		}
 	}
 	
-	@media (min-width: #{$container}px) {
+	@media (min-width: 1440px) {
 		padding-left: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
 		padding-right: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
+
+		&._alt-container {
+			padding-left: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
+			padding-right: max(var(--desktop-container-padding), calc(50% - #{math.div($container, 2)}px));
+		}
 	}
 }
 
@@ -342,11 +357,11 @@ section {
 			margin-top: 13.333333vw;
 			@include _700 {
 				margin-top: 0;
-				padding: 0 4.236111vw 0 0;
+				padding: 0 4.930556vw 0 0;
 			}
 			
 			@include _1440 {
-				padding: 0 61px 0 0;
+				padding: 0 71px 0 0;
 			}
 		}
 		&__col:nth-child(2) {
@@ -378,7 +393,7 @@ section {
 		}
 		&.anim-video {
 			@include _700 {
-				padding-left: 10.3%;
+				padding-left: 6%;
 			}
 		}
 	}
@@ -386,11 +401,12 @@ section {
 	&__video {
 		position: relative;
 		width: 100%; padding-top: 90.942699%;
+		min-height: 100%;
 		
 		video {
 			position: absolute;
 			left: 0; top: 0;
-			width: 100%; height: 100%;
+			width: auto; height: 100%;
 			border-radius: 3.733333vw;
 
 			@include _700 {

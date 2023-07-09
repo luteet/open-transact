@@ -99,10 +99,12 @@
 					padding: 16px 20px;
 					font-size: 0.972222vw;
 					border-radius: 0.416667vw 0 0 0.416667vw;
+					height: 3.888889vw;
 				}
 				
 				@include _1440 {
 					font-size: 0.875rem;
+					height: 56px;
 					padding: 16px 20px;
 					border-radius: 6px 0px 0px 6px;
 				}

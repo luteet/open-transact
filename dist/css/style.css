@@ -105,6 +105,10 @@ textarea {
     overflow: auto
 }
 
+.footer,.main,.split-text .line,.visually-hidden,body._mob-menu-active,body._popup-active {
+    overflow: hidden
+}
+
 [type=checkbox],[type=radio] {
     padding: 0
 }
@@ -218,7 +222,8 @@ h1,h2,h3,h4,h5,h6 {
     --silver-text: #A4A6A8;
     --container-padding: 8.125vw;
     --desktop-container-padding: 117px;
-    --mob-container-padding: 8vw
+    --mob-container-padding: 8vw;
+    --alt-mob-container-padding: 3.2vw
 }
 
 body,html {
@@ -240,10 +245,6 @@ body {
     line-height: 150%;
     display: flex;
     flex-direction: column
-}
-
-body._mob-menu-active,body._popup-active {
-    overflow: hidden
 }
 
 .image-aspect-ratio {
@@ -277,13 +278,17 @@ section {
 }
 
 .main {
-    overflow: hidden;
     flex: 1 0 auto
 }
 
 .container {
     padding-left: var(--mob-container-padding);
     padding-right: var(--mob-container-padding)
+}
+
+.container._alt-container {
+    padding-left: var(--alt-mob-container-padding);
+    padding-right: var(--alt-mob-container-padding)
 }
 
 .btn {
@@ -338,12 +343,7 @@ section {
     white-space: nowrap;
     -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden
-}
-
-.split-text .line {
-    overflow: hidden
+    clip: rect(0 0 0 0)
 }
 
 .split-text:not(._animated) .line-body {
@@ -358,9 +358,12 @@ section {
     opacity: 0
 }
 
+.fade-in,.header__logo {
+    -webkit-transform: translate3d(0,0,0)
+}
+
 .fade-in {
     opacity: 0;
-    -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0)
 }
 
@@ -436,17 +439,15 @@ section {
 .step-section__video {
     position: relative;
     width: 100%;
-    padding-top: 90.942699%
-}
-
-.header,.step-section__video video {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%
+    padding-top: 90.942699%;
+    min-height: 100%
 }
 
 .step-section__video video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
     height: 100%;
     border-radius: 3.733333vw
 }
@@ -574,6 +575,10 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
     z-index: 3;
     display: flex;
     justify-content: space-between;
@@ -588,7 +593,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     max-width: 150px;
     position: relative;
     z-index: 4;
-    -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0)
 }
 
@@ -1091,8 +1095,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 2;
-    overflow: hidden
+    z-index: 2
 }
 
 .footer>* {
@@ -1168,9 +1171,9 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 @media (min-width:700px) {
-    .container {
-        padding-left: max(var(--container-padding),50% - 603px);
-        padding-right: max(var(--container-padding),50% - 603px)
+    .container,.container._alt-container {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding)
     }
 
     .btn {
@@ -1228,7 +1231,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 
     .step-section._reverse._alt-mode .step-section__col:nth-child(1) {
         margin-top: 0;
-        padding: 0 4.236111vw 0 0
+        padding: 0 4.930556vw 0 0
     }
 
     .step-section._reverse._alt-mode .step-section__col:nth-child(2) {
@@ -1240,7 +1243,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .step-section__col.anim-video {
-        padding-left: 10.3%
+        padding-left: 6%
     }
 
     .step-section__video video {
@@ -1319,6 +1322,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .footer::before,.hero::before {
+        left: .833333vw;
         width: calc(100% - .833333vw - .833333vw)
     }
 
@@ -1328,7 +1332,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .hero::before {
-        left: .833333vw;
         top: .833333vw;
         height: calc(100% - .833333vw - 6.944444vw);
         border-radius: 1.180556vw
@@ -1336,7 +1339,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 
     .hero__title {
         text-align: center;
-        max-width: 53.611111vw;
+        max-width: 62.5vw;
         margin: 7.083333vw auto 0
     }
 
@@ -1521,7 +1524,8 @@ input:focus::placeholder,textarea:focus::placeholder {
     .credit-card__sign-up--wrapper input {
         padding: 16px 20px;
         font-size: .972222vw;
-        border-radius: .416667vw 0 0 .416667vw
+        border-radius: .416667vw 0 0 .416667vw;
+        height: 3.888889vw
     }
 
     .credit-card__sign-up--wrapper button {
@@ -1538,7 +1542,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .footer::before {
-        left: .833333vw;
         top: 0;
         height: calc(100% - .833333vw);
         border-radius: 1.180556vw
@@ -1588,14 +1591,12 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 }
 
-@media (min-width:1206px) {
-    .container {
+@media (min-width:1440px) {
+    .container,.container._alt-container {
         padding-left: max(var(--desktop-container-padding),50% - 603px);
         padding-right: max(var(--desktop-container-padding),50% - 603px)
     }
-}
 
-@media (min-width:1440px) {
     .btn {
         padding: 19px 31px;
         font-size: 1rem;
@@ -1636,7 +1637,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .step-section._reverse._alt-mode .step-section__col:nth-child(1) {
-        padding: 0 61px 0 0
+        padding: 0 71px 0 0
     }
 
     .step-section._reverse._alt-mode .step-section__col:nth-child(2) {
@@ -1851,6 +1852,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 
     .credit-card__sign-up--wrapper input {
         font-size: .875rem;
+        height: 56px;
         padding: 16px 20px;
         border-radius: 6px 0 0 6px
     }
