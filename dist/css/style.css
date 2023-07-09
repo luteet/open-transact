@@ -826,8 +826,8 @@ input:focus::placeholder,textarea:focus::placeholder {
     border-radius: 6.42px;
     width: 137.6vw;
     height: 91.2vw;
-    -webkit-filter: drop-shadow(0 4px 159px rgba(14, 18, 24, .12)) drop-shadow(0 0 48px rgba(255, 255, 255, .02));
-    filter: drop-shadow(0 4px 159px rgba(14, 18, 24, .12)) drop-shadow(0 0 48px rgba(255, 255, 255, .02))
+    -webkit-filter: drop-shadow(0 1.71px 68.03px rgba(14, 18, 24, .12)) drop-shadow(0 0 20.54px rgba(255, 255, 255, .02));
+    filter: drop-shadow(0 1.71px 68.03px rgba(14, 18, 24, .12)) drop-shadow(0 0 20.54px rgba(255, 255, 255, .02))
 }
 
 .text-section {
@@ -1170,10 +1170,6 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 @media (min-width:700px) {
-    .app__footer,.header {
-        justify-content: stretch
-    }
-
     .container,.container._alt-container {
         padding-left: var(--container-padding);
         padding-right: var(--container-padding)
@@ -1277,6 +1273,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .header {
+        justify-content: stretch;
         grid-template-columns: 17.361111vw auto 17.361111vw;
         padding-top: 3.819444vw
     }
@@ -1395,7 +1392,9 @@ input:focus::placeholder,textarea:focus::placeholder {
         width: auto;
         height: 100%;
         margin: 0;
-        border-radius: .445694vw
+        border-radius: .445694vw;
+        -webkit-filter: drop-shadow(0 4px 159px rgba(14, 18, 24, .12)) drop-shadow(0 0 48px rgba(255, 255, 255, .02));
+        filter: drop-shadow(0 4px 159px rgba(14, 18, 24, .12)) drop-shadow(0 0 48px rgba(255, 255, 255, .02))
     }
 
     .app,.text-section {
@@ -1418,6 +1417,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .app__footer {
+        justify-content: stretch;
         margin-top: 1.805556vw
     }
 
