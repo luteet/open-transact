@@ -49,9 +49,11 @@
 	&__footer {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		margin-right: -5.066667vw;
 		margin-top: 6.933333vw;
 		@include _700 {
+			justify-content: stretch;
 			margin-top: 1.805556vw;
 		}
 		
@@ -68,6 +70,7 @@
 		padding: 1.6vw 3.5vw;
 		margin-right: 5vw;
 		border-radius: 2.666667vw;
+		text-align: left;
 		@include _700 {
 			grid-template-columns: 2.291667vw auto;
 			border-radius: 0.694444vw;
